@@ -6,7 +6,7 @@ which does not ship Realtime of its own (its README lists it as "Coming soon").
 Clients connect with the ordinary `@supabase/supabase-js` / `@supabase/realtime-js`
 client. No forked client, no shim.
 
-**This is Phase 1 of [ADR 0003](../../docs/adr/0003-realtime-change-capture.md):
+**This is Phase 1 of [ADR 0003](docs/adr/0003-realtime-change-capture.md):
 `broadcast` and `presence` only.** Both are pure pub/sub and touch no table.
 `postgres_changes` needs the change-capture pipeline from Phase 2 and is
 **refused with an explicit error**, not silently accepted — see below.
@@ -109,5 +109,19 @@ because the client is the specification. That also means the binary framing is
 exercised for free: the client encodes broadcasts as binary frames by default.
 
 ```
-pnpm --filter @jessevent/supalite-realtime test
+pnpm install
+pnpm test
 ```
+
+## Demo
+
+`examples/demo.mjs` runs a real Supabase Lite app with two `supabase-js`
+clients trading broadcasts and presence events:
+
+```
+pnpm demo
+```
+
+## License
+
+MIT
